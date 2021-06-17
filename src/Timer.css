@@ -1,0 +1,93 @@
+.configurator {
+    padding: 0.5em;
+    box-shadow: 1px 1px 5px #000;
+    background: rgb(34,120,171);
+    background: linear-gradient(45deg, rgba(34,120,171,1) 0%, rgba(141,25,113,1) 100%);
+    margin-bottom: 1em;
+}
+
+.configurator__title {
+    margin: 0;
+    padding: 0.5em;
+    color: #f1f1f1;
+    text-shadow: 1px 1px 2px #000;
+}
+
+.configurator__input-number {
+    width: 2.2em;
+    font-size: 28px;
+    margin: 0.5em;
+}
+.configurator__input-button {
+    font-size: 28px;
+    width: 4.4em;
+    margin: 0.5em;
+    font-weight: bold;
+    color: rgb(90, 90, 90);
+}
+
+.grid {
+    display: flex;
+    flex-flow: row wrap;
+    padding: 0.5em;
+    background: rgb(238, 238, 238);
+    margin-bottom: 1em;
+}
+
+.grid__element {
+    flex: 0 1 calc(50% - 1em);
+    margin: 0.5em;
+    background-color: #f0f0f0;
+    box-shadow: 1px 1px 5px rgb(94, 94, 94);
+}
+
+.grid__element_message {
+    flex: 0 1 100%;
+    background-color: #4BB1CF;
+    color: #214E5C;
+    padding: 1em;
+    font-size: 1.2em;
+}
+
+.clock {
+    display: flex;
+    flex-flow: row nowrap;
+    padding: 0.3em;
+}
+
+.clock_theme_complete {
+    background-color: rgb(138, 252, 45);
+}
+
+.clock__digits {
+    flex: 0 1 100%;
+    font-size: 2em;
+    padding: 0.4em 0.4em;
+    margin: 0;
+}
+
+.clock__button {
+    flex: 0 1 100px;
+    border: 2px solid rgb(90, 90, 90);
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #6E2417;
+    background-color: #ed9632;
+}
+
+.clock__button:hover {
+    border: 2px solid rgb(0, 0, 0);
+    color: #000;
+    background-color: #f05454;
+}
+
+.clock__button:active {
+    box-shadow: inset 1px 1px 5px rgb(94, 94, 94);
+    color: #000;
+}
+
+@media screen and (max-width: 650px) {
+    .grid__element {
+        flex: 0 1 100%;
+    }
+}

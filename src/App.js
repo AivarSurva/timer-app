@@ -1,20 +1,15 @@
 import React, { Component } from 'react';
 import './App.css';
+import { TimerApp } from './Timer';
 
 class App extends Component {
-	render(){
-		return(
-			<div className="App">
-				<Text value="React App template."/>
-			</div>
-		);
-	}
-}
-
-function Text(props) {
-	return(
-		<h1>{props.value}</h1>
-	);
+    render(){
+        return(
+            <div className="App">
+                <TimerApp />
+            </div>
+        );
+    }
 }
 
 export default App;
