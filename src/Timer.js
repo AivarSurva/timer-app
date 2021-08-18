@@ -2,12 +2,15 @@ import React, { Component } from 'react';
 import './Timer.css';
 import timerSound from './timer_alarm.mp3';
 import { nanoid } from 'nanoid';
+import { withRouter } from 'react-router';
+import queryString from 'query-string';
 
 class TimerApp extends Component {
     constructor(props){
         super(props);
+        const { hh = '', mm = '', ss = '' } = queryString.parse(props.location.search);
         this.state = {
-            hh: '', mm: '', ss: '',
+            hh: hh, mm: mm, ss: ss,
             timers: []
         };
         this.alarmAudio = new Audio(timerSound);
@@ -44,14 +47,15 @@ class TimerApp extends Component {
         clearInterval(this.intervalID);
     }
     handleStartTimer() {
-        if (this.state.hh == '' && this.state.mm == '' && this.state.ss == ''){
+        if ( (this.state.hh === '' && this.state.mm === '' && this.state.ss === '') ||
+             isNaN(this.state.hh) || isNaN(this.state.mm) || isNaN(this.state.ss) ){
             this.setState({hh: '', mm: '', ss: ''});
             return;
         }
         const date = new Date();
-        date.setSeconds(date.getSeconds() + this.state.ss);
-        date.setMinutes(date.getMinutes() + this.state.mm);
-        date.setHours(date.getHours() + this.state.hh);
+        date.setSeconds(date.getSeconds() + parseInt(+this.state.ss));
+        date.setMinutes(date.getMinutes() + parseInt(+this.state.mm));
+        date.setHours(date.getHours() + parseInt(+this.state.hh));
         
         this.setState(state => {
             return {hh: '', mm: '', ss: '', timers: [...state.timers, {endTime: date, id: nanoid()}]};
@@ -207,4 +211,6 @@ function addZeroToSingleDigit(value) {
     return value < 10 ? `0${value}` : value;
 }
 
-export { TimerApp };
+const TimerAppWithRouter = withRouter(TimerApp);
+
+export default TimerAppWithRouter;
